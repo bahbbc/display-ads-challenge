@@ -16,14 +16,28 @@ Since I will start to work with marketing data at my job this is the perfect cha
 ### Problem Statement
 _(approx. 1 paragraph)_
 
-The goal of this problem is to benchmark the most accurate ML algorithms for CTR estimation. There are 3 good solutions (the first 3 winners) for the challenge.
+The goal of this problem is to benchmark the most accurate ML algorithms for CTR estimation, so the company can determine what user they show an ad. There are 3 good solutions (the first 3 winners) for the challenge.
 
 ### Datasets and Inputs
 _(approx. 2-3 paragraphs)_
 
+The dataset can be obtained at (http://labs.criteo.com/2014/02/download-kaggle-display-advertising-challenge-dataset/) and consists of a weak of data from Criteo, who has:
 
+ - 6 data centers on 3 continents
+ - More than 7000 servers and a few tens of Petabytes of storage on our HPC cluster
+ - 30B HTTP requests and 3B unique banners displayed per day
+ - Peak traffic of 800K HTTP requests per second
+ - Respond to bids in 80ms or less, 24/7
 
-In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
+The datasets and file descriptions are obtained from kaggle: https://www.kaggle.com/c/criteo-display-ad-challenge/data
+
+*Data fields*
+**Label** - Target variable that indicates if an ad was clicked (1) or not (0).
+**I1-I13** - A total of 13 columns of integer features (mostly count features).
+**C1-C26** - A total of 26 columns of categorical features. The values of these features have been hashed onto 32 bits for anonymization purposes.
+The semantic of the features is undisclosed.
+
+When a value is missing, the field is empty.
 
 ### Solution Statement
 _(approx. 1 paragraph)_
@@ -33,17 +47,67 @@ In this section, clearly describe a solution to the problem. The solution should
 ### Benchmark Model
 _(approximately 1-2 paragraphs)_
 
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
+Our benchmark model will be the third place winner of the competition. That used a logistic regression with a quadratic/polynomial feature generalization. In it's paper (file:///home/barbarabarbosa/Downloads/Display-ad-challenge-Song.pdf) tha winner is not very specific in what features are combined to generate that combinations.
+
+Instead of a regular logistic regression the winner used an implementation called Vowpal wabbit, since it only keeps the feature weights in RAM. The best model uses quadratic generalization for feature groups. Also the best model was implemented using an L2 optimization as the suggest solution.
 
 ### Evaluation Metrics
 _(approx. 1-2 paragraphs)_
 
-In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+The metric for evaluation will be log-loss (the smaller the better). The benchmark model has a log-loss of 0.44610 but since this is a kaggle competition, and the main objective is to win the score by super minor changes at the leaderboard, we will focus on obtain at least a model with 0.50 of log-loss. Which will give me a position of 500th at the leaderboard.
+
+The logloss is defined by the equation preseted in image 1
+
+[colocar a formula do logloss]
+
+where L is the number of instances, yi is the true label (0 or 1), and ¯yi is the predicted probability.
+
+This metric is frequently used for classification models where the final result is a probability. Log loss increases as the predicted probability diverges from the actual label.
 
 ### Project Design
 _(approx. 1 page)_
 
-In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+This project will be divided in 5 sections:
+
+    1 - Exploratory Data Analysis
+
+    2 - Feature engineering
+
+    3 - Model Training
+
+    4 - Model evaluation and comparison
+
+    5 - Final model selection and comprehension
+
+#### 1 - Exploratory Data Analysis
+Since the data isn't explained, we will have to check every feature for distribution analysis and a better undestanding of the problem.
+
+This step will gave a better enlightment of what to do on the next step, as well as which features to use. The only information we have by now is that the dataset has some numerical and categorical features.
+
+#### 2 - Feature engineering
+In this section we hope to explore some possible relations with features (discovered in section 1), possible applying some normalization (like a log) or some combination (multiplication, division, sum) between features to apply in this step.
+
+Besides that we can possible apply PCA for the numerical features, using the PCAs attributes with most variance and the categorical features all togheter.
+
+Since the dataset is really big (4.6 Gb in a ziped file) I also plan to use Dask to perform the paralel computing I will need to run the feature engineer of this dataset in my machine.
+
+#### 3 - Model Training
+
+Since this is a classification problem and we have a great amount of data we plan to focus the training in 2 models
+
+ - A logistic regression (because the 3rd place in this competition used this model)
+ - A tree based algorithm, more specifically an Adaboost. (I would rather use a LightGBM, because is a gradient algorithm, and is one of the winner solutions, though)
+
+Considering the logistic regression aproach we will use L2 regularization to remove useless atributes.
+For the Adaboost we will have to take care with the amount of trees we will use, because the size of the dataset can be a huge problem and make the solution impracticable.
+
+#### 4 - Model evaluation and comparison
+
+Since the metric evaluated at the challenge is algorithm loss, we will use this metric to compare the models. We can also verify the AUC and accuracy, but the main metric will be log loss.
+
+#### 5 - Final model selection and comprehension
+
+As mentioned in section 4, we will use log-loss for model selection and if possible, we will perform a feature analysis of the winner model. Since the dataset is anonymised, this is not an easy task to perform, and maybe couldn't be possible.
 
 -----------
 
