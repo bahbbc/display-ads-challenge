@@ -1,7 +1,7 @@
 # Machine Learning Engineer Nanodegree
 ## Capstone Proposal
 Bárbara Barbosa
-January 31st, 2019
+February 10st, 2019
 
 ## Proposal
 _(approx. 2-3 pages)_
@@ -42,7 +42,7 @@ When a value is missing, the field is empty.
 ### Solution Statement
 _(approx. 1 paragraph)_
 
-In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
+The solution for this problem consistis build a classifier algorithm that can predict the probability of an ad being clicked. This will be achivied using an AdaBoost classifier optimized by logloss, the evaluation metric. Also some feature enginering, combining the features will be performed. The evaluation will be made using logloss, the smaller the better.
 
 ### Benchmark Model
 _(approximately 1-2 paragraphs)_
@@ -56,11 +56,11 @@ _(approx. 1-2 paragraphs)_
 
 The metric for evaluation will be log-loss (the smaller the better). The benchmark model has a log-loss of 0.44610 but since this is a kaggle competition, and the main objective is to win the score by super minor changes at the leaderboard, we will focus on obtain at least a model with 0.50 of log-loss. Which will give me a position of 500th at the leaderboard.
 
-The logloss is defined by the equation preseted in image 1
+The logloss is defined by the equation bellow [from](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html). Except that in sickit-learn the equation is negative, so the greater the better (as other metrics).
 
-[colocar a formula do logloss]
+-log P(yt|yp) = -(yt log(yp) + (1 - yt) log(1 - yp))
 
-where L is the number of instances, yi is the true label (0 or 1), and ¯yi is the predicted probability.
+where yt is the true label and yp is the predicted probability.
 
 This metric is frequently used for classification models where the final result is a probability. Log loss increases as the predicted probability diverges from the actual label.
 
