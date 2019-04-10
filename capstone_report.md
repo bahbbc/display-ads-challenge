@@ -64,45 +64,46 @@ When a value is missing, the field is empty.
 
 Since the dataset is anonymized, it's hard to obtain domain knowledge from it. Because of that all the analysis are some simple statistics like mean, standard deviation and median.
 
-categorical11    0.000000
-categorical10    0.000000
-categorical9     0.000000
-categorical8     0.000000
-categorical7     0.000000
-categorical14    0.000000
-categorical5     0.000000
-categorical2     0.000000
-categorical1     0.000000
-categorical15    0.000000
-categorical18    0.000000
-categorical23    0.000000
-interger2        0.000000
-categorical17    0.000000
-categorical13    0.000000
-interger8        0.000497
-interger5        0.025809
-categorical16    0.034019
-categorical12    0.034019
-categorical3     0.034019
-categorical4     0.034019
-categorical21    0.034019
-categorical24    0.034019
-interger11       0.043256
-interger9        0.043256
-interger7        0.043256
-categorical6     0.120867
-interger3        0.214645
-interger13       0.216781
-interger4        0.216781
-interger6        0.223652
-categorical19    0.440065
-categorical20    0.440065
-categorical25    0.440065
-categorical26    0.440065
-interger10       0.453606
-interger1        0.453606
-categorical22    0.762535
-interger12       0.765078
+| categorical11 | 0.00 |
+|:-------------:|:----:|
+| categorical10 | 0.00 |
+|  categorical9 | 0.00 |
+|  categorical8 | 0.00 |
+|  categorical7 | 0.00 |
+| categorical14 | 0.00 |
+|  categorical5 | 0.00 |
+|  categorical2 | 0.00 |
+| categorical1  | 0.00 |
+| categorical15 | 0.00 |
+| categorical18 | 0.00 |
+| categorical23 | 0.00 |
+| interger2     | 0.00 |
+| categorical17 | 0.00 |
+| categorical13 | 0.00 |
+| interger8     | 0.00 |
+| interger5     | 0.02 |
+| categorical16 | 0.03 |
+| categorical12 | 0.03 |
+| categorical3  | 0.03 |
+| categorical4  | 0.03 |
+| categorical21 | 0.03 |
+| categorical24 | 0.03 |
+| interger11    | 0.04 |
+| interger9     | 0.04 |
+| interger7     | 0.04 |
+| categorical6  | 0.12 |
+| interger3     | 0.21 |
+| interger13    | 0.21 |
+| interger4     | 0.21 |
+| interger6     | 0.22 |
+| categorical19 | 0.44 |
+| categorical20 | 0.44 |
+| categorical25 | 0.44 |
+| categorical26 | 0.44 |
+| interger10    | 0.45 |
+| interger1     | 0.45 |
+| categorical22 | 0.76 |
+| interger12    | 0.76 |
 
 As we can see from the table above, there are variables as _interger12_ , _categorical22_, _interger1_, _interger10_, _categorical26_, _categorical25_, _categorical20_, _categorical19_ that have more than 30% of nulls. Those variables will be disconsidered.
 
