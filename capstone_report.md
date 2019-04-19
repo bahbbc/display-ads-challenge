@@ -113,6 +113,28 @@ The analysis showed that some categories have 10131226 levels and some others ha
 
 As we can see from the distributions from the integer data, there are a lot of variables with outliers, and the mean is far from the median for a lot of those variables.
 
+### Exploratory Visualization
+
+In this section we present some graphs that will back up the feature engineering decisions.
+
+![cat7.png](categorical feat. 7)
+Image of feature categorical 7 barplot
+
+![cat8.png](categorical feat. 8)
+Image of feature categorical 8 barplot
+
+Using this categorical features we can see that they have many levels, so we cannot using an strategy as one hot enconding because of the high dimensionality.
+
+As for the numerical features, we can see that the main atributes are next to zero, and the distributions are far from the normal.
+
+![int8.png](integer feat. 8)
+Image of integer feature 7 distplot
+
+![int11.png](integer feat. 11)
+Image of integer feature 11 distplot
+
+Because of that we need some treatment for those variables.
+
 ### Algorithms and Techniques
 
 The classifier is a logistic regression training using an online learning approach. Since I have more data than memory available in my computer, I had to find a manner to train the algorithm, and online learning is very suitable for large datasets. Online machine learning is a method of machine learning in which data becomes available in a sequential order and is used to update our best predictor for future data at each step, as opposed to batch learning techniques which generate the best predictor by learning on the entire training data set at once.
