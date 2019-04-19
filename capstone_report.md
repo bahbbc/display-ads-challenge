@@ -197,9 +197,9 @@ Since the logloss is better as it grows smaller, we can see that the PCA had a l
 
 The images bellow show the results presented at the kaggle competition.
 
-[!original.png](Resultados da abordagem original)
+![original.png](Resultados da abordagem original)
 
-[!pca.png](Resultados da abordagem com PCA)
+![pca.png](Resultados da abordagem com PCA)
 
 ### Justification
 
