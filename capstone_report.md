@@ -118,9 +118,11 @@ As we can see from the distributions from the integer data, there are a lot of v
 In this section we present some graphs that will back up the feature engineering decisions.
 
 ![categorical feat. 7](cat7.png)
+
 Image of feature categorical 7 barplot
 
 ![categorical feat. 8](cat8.png)
+
 Image of feature categorical 8 barplot
 
 Using this categorical features we can see that they have many levels, so we cannot using an strategy as one hot enconding because of the high dimensionality.
@@ -128,9 +130,11 @@ Using this categorical features we can see that they have many levels, so we can
 As for the numerical features, we can see that the main atributes are next to zero, and the distributions are far from the normal.
 
 ![integer feat. 8](int8.png)
+
 Image of integer feature 7 distplot
 
 ![integer feat. 11](int11.png)
+
 Image of integer feature 11 distplot
 
 Because of that we need some treatment for those variables.
@@ -199,7 +203,11 @@ The images bellow show the results presented at the kaggle competition.
 
 ![Resultados da abordagem original](original.png)
 
+Resultados da abordagem original
+
 ![Resultados da abordagem com PCA](pca.png)
+
+Resultados da abordagem com PCA
 
 ### Justification
 
